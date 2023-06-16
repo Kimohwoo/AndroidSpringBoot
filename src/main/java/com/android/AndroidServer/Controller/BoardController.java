@@ -20,11 +20,6 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 
-	@GetMapping("list-1")
-	public String test() {
-		return "Test";
-	}
-
 	@GetMapping("list")
 	public Map<String, Object> RequestList() {
 		Criteria cri = new Criteria();

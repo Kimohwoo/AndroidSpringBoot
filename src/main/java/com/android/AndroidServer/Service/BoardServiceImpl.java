@@ -13,7 +13,7 @@ import com.android.AndroidServer.VO.Criteria;
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
-	private BoardMapper mapper;
+	BoardMapper mapper;
 
 	@Override
 	public void regist(BoardDTO board) {
