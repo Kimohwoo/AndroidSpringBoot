@@ -13,7 +13,7 @@ import com.android.AndroidServer.VO.ExerciseDTO;
 import com.android.AndroidServer.Service.ExerciseService;
 
 @RestController
-@RequestMapping("/api/walk/")
+@RequestMapping("/api/exercise/")
 public class ExerciseController {
 	@Autowired
 	ExerciseService walkService;
