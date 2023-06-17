@@ -1,0 +1,61 @@
+create database walkingdog;
+
+USE walkingdog;
+
+CREATE TABLE user (
+  uid VARCHAR(100) primary key,
+  nickname VARCHAR(20) unique,
+  dogname varchar(20),
+  dogProfile varchar(40)
+);
+
+
+create table exercise(
+exerciseId bigint primary key auto_increment,
+uid varchar(20),
+fileName varchar(20),
+filePath varchar(100),
+exerciseTime varchar(20),
+distance varchar(20),
+calorie varchar(20),
+dayNum varchar(20),
+constraint tbfk_user_uid foreign key(uid) references user(uid) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE board(
+   no BIGINT AUTO_INCREMENT PRIMARY KEY,
+   title VARCHAR(50),
+   author VARCHAR(20),
+   content VARCHAR(500),
+   regdate DATE,
+   updateday DATE,
+   CONSTRAINT brdfk_author_user_nickname FOREIGN KEY(author) REFERENCES user(nickname) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+drop table user;
+drop table exercise;
+drop table board;
+
+
+-- user 더미 데이터 삽입
+INSERT INTO user (uid, nickname, dogname, dogProfile)
+SELECT
+    CONCAT('user', LPAD(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)), 3, '0')) AS uid,
+    CONCAT('nickname', LPAD(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)), 3, '0')) AS nickname,
+    CONCAT('dogname', LPAD(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)), 3, '0')) AS dogname,
+    CONCAT('dogProfile', LPAD(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)), 3, '0')) AS dogProfile
+FROM
+    information_schema.TABLES
+LIMIT 100;
+
+-- board 테이블에 더미 데이터 삽입
+INSERT INTO board (title, author, content, regdate, updateday)
+SELECT
+    CONCAT('title', LPAD(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)), 3, '0')) AS title,
+    nickname,
+    CONCAT('content', LPAD(ROW_NUMBER() OVER (ORDER BY (SELECT NULL)), 3, '0')) AS content,
+    CURRENT_DATE() AS regdate,
+    CURRENT_DATE() AS updateday
+FROM
+    user
+LIMIT 100;

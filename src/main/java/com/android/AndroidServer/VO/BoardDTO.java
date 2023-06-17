@@ -1,6 +1,5 @@
 package com.android.AndroidServer.VO;
 
-import java.sql.Date;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +12,7 @@ public class BoardDTO {
 	private String title;
 	private String author;
 	private String content;
-	private Date regdate;
-	private Date updateDay;
+	private String regdate;
+	private String updateDay;
 
 }
