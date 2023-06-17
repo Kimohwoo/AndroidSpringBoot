@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.android.AndroidServer.Service.BoardService;
 import com.android.AndroidServer.VO.BoardDTO;
@@ -19,21 +17,25 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
-
-	@GetMapping("list-1")
-	public String test() {
-		return "Test";
-	}
-
 	@GetMapping("list")
-	public Map<String, Object> RequestList() {
-		Criteria cri = new Criteria();
+	public Map<String, Object> RequestList(@RequestParam("pageNo") int pageNo, @RequestParam("numOfRows") int numOfRows) {
+		Criteria cri = new Criteria(pageNo, numOfRows);
 
 		List<BoardDTO> list = boardService.getListPaging(cri);
-		Map<String, Object> boardList = new HashMap<String, Object>();
-		boardList.put("item", list);
+		Map<String, Object> mapList = new HashMap<String, Object>();
+		mapList.put("item", list);
 
-		return boardList;
+		return mapList;
+	}
+
+	@PostMapping("detail")
+	public String RegBoard(@RequestBody BoardDTO board){
+		if(board != null) {
+			System.out.println("저자 확인 : " + board.getAuthor());
+			boardService.regist(board);
+			return "1";
+		}
+		return "0";
 	}
 
 }
