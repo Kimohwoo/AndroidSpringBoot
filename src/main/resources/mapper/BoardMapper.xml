@@ -15,7 +15,7 @@
 	
 	<select id="getListPaging" resultType="com.android.AndroidServer.VO.BoardDTO">
 	<![CDATA[
-		SELECT no, title, author, content, regdate, updateday
+		SELECT *
 		FROM board
 		LIMIT #{amount} OFFSET #{skip}
 		
@@ -31,6 +31,18 @@
 			sysdate()
 		)
 	</insert>
-	
+
+	<update id="update">
+		UPDATE board
+		SET title = #{title},
+			content = #{content},
+			updateDay = #{updateDay}
+		WHERE board.no = #{no}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM board
+		WHERE no = #{no}
+	</delete>
 
 </mapper>

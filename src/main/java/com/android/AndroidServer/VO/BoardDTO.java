@@ -9,6 +9,7 @@ import lombok.Setter;
 public class BoardDTO {
 
 	private long no;
+	private String uid;
 	private String title;
 	private String author;
 	private String content;

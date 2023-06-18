@@ -34,9 +34,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean delete(BoardDTO board) {
+	public boolean delete(long no) {
 		// TODO Auto-generated method stub
-		return mapper.delete(board) == 1;
+		return mapper.delete(no) == 1;
 	}
 
 	@Override

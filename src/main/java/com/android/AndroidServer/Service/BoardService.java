@@ -13,7 +13,7 @@ public interface BoardService {
 
 	public boolean update(BoardDTO board);
 
-	public boolean delete(BoardDTO board);
+	public boolean delete(long no);
 
 	public int hit(BoardDTO board);
 

@@ -31,11 +31,30 @@ public class BoardController {
 	@PostMapping("detail")
 	public String RegBoard(@RequestBody BoardDTO board){
 		if(board != null) {
-			System.out.println("저자 확인 : " + board.getAuthor());
 			boardService.regist(board);
 			return "1";
 		}
 		return "0";
+	}
+
+	@PutMapping("detail")
+	public long updateBoard(@RequestParam("no") long no, @RequestBody BoardDTO board){
+
+		if(boardService.update(board)){
+			return no;
+		} else {
+			return -1;
+		}
+	}
+
+	@DeleteMapping("detail")
+	public long deleteBoard(@RequestParam("no") long no){
+
+		if(boardService.delete(no)){
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

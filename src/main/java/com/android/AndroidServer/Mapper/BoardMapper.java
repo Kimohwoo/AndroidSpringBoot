@@ -16,7 +16,7 @@ public interface BoardMapper {
 
 	public int update(BoardDTO board);
 
-	public int delete(BoardDTO board);
+	public int delete(long no);
 
 	public int hit(BoardDTO board);
 

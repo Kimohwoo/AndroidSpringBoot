@@ -24,12 +24,14 @@ constraint tbfk_user_uid foreign key(uid) references user(uid) ON DELETE CASCADE
 
 CREATE TABLE board(
    no BIGINT AUTO_INCREMENT PRIMARY KEY,
+   uid VARCHAR(100),
    title VARCHAR(50),
    author VARCHAR(20),
    content VARCHAR(500),
    regdate DATE,
    updateday DATE,
    CONSTRAINT brdfk_author_user_nickname FOREIGN KEY(author) REFERENCES user(nickname) ON DELETE CASCADE ON UPDATE CASCADE
+   CONSTRAINT brdfk_uid_user_uid FOREIGN KEY(uid) REFERENCES user(uid) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 drop table user;
