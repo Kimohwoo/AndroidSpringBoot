@@ -24,9 +24,4 @@ public class Criteria {
 		this.amount = amount;
 		this.skip = (pageNum - 1) * amount;
 	}
-
-	public String[] getTypeArr() {
-		return type == null ? new String[] {} : type.split("");
-	}
-
 }

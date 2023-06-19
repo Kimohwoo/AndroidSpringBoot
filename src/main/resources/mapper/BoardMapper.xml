@@ -12,13 +12,22 @@
 		WHERE no = #{no}
 		]]>
 	</select>
+
+	<select id="getMyList" resultType="com.android.AndroidServer.VO.BoardDTO">
+		<![CDATA[
+		SELECT *
+		FROM board
+		WHERE author = #{author}
+		]]>
+	</select>
+
 	
 	<select id="getListPaging" resultType="com.android.AndroidServer.VO.BoardDTO">
 	<![CDATA[
 		SELECT *
 		FROM board
+		ORDER BY regdate
 		LIMIT #{amount} OFFSET #{skip}
-		
 		]]>
 	</select>
 	

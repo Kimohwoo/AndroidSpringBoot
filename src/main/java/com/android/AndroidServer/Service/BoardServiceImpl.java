@@ -51,4 +51,9 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getListPaging(cri);
 	}
 
+	@Override
+	public List<BoardDTO> getMyList(String author) {
+
+		return mapper.getMyList(author);
+	}
 }

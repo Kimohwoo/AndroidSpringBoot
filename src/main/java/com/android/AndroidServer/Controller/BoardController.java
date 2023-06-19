@@ -17,15 +17,31 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+
+	@GetMapping("mylist")
+	public Map<String, Object> myList(@RequestParam("author") String author){
+		System.out.println("author 값 확인 : " + author);
+
+		List<BoardDTO> myBoard = boardService.getMyList(author);
+		Map<String, Object> mapList = new HashMap<String, Object>();
+		mapList.put("item", myBoard);
+		System.out.println(myBoard.toString());
+		return mapList;
+	}
+
 	@GetMapping("list")
 	public Map<String, Object> RequestList(@RequestParam("pageNo") int pageNo, @RequestParam("numOfRows") int numOfRows) {
+
 		Criteria cri = new Criteria(pageNo, numOfRows);
 
 		List<BoardDTO> list = boardService.getListPaging(cri);
-		Map<String, Object> mapList = new HashMap<String, Object>();
-		mapList.put("item", list);
-
-		return mapList;
+		if(list != null) {
+			Map<String, Object> mapList = new HashMap<String, Object>();
+			mapList.put("item", list);
+			return mapList;
+		} else {
+			return null;
+		}
 	}
 
 	@PostMapping("detail")

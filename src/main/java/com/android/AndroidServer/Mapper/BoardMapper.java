@@ -22,4 +22,6 @@ public interface BoardMapper {
 
 	public List<BoardDTO> getListPaging(Criteria cri);
 
+	public List<BoardDTO> getMyList(String uId);
+
 }

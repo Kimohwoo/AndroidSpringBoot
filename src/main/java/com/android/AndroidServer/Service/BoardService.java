@@ -19,4 +19,6 @@ public interface BoardService {
 
 	public List<BoardDTO> getListPaging(Criteria cri);
 
+	public List<BoardDTO> getMyList(String author);
+
 }
