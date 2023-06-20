@@ -17,7 +17,7 @@ import com.android.AndroidServer.Service.ExerciseService;
 
 @RestController
 @RequestMapping("/api/exercise/")
-public class ExerciseController {
+public class CalendarController {
 	@Autowired
 	ExerciseService walkService;
 	
