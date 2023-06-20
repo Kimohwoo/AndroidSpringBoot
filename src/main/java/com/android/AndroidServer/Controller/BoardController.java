@@ -14,10 +14,8 @@ import com.android.AndroidServer.VO.Criteria;
 @RestController
 @RequestMapping("/board/*")
 public class BoardController {
-
 	@Autowired
 	BoardService boardService;
-
 	@GetMapping("mylist")
 	public Map<String, Object> myList(@RequestParam("author") String author){
 		System.out.println("author 값 확인 : " + author);

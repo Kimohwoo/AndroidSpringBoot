@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class ExerciseDTO {
 
+    private Long exerciseId;
     private String uid;
     private String fileName;   
     private String filePath; 

@@ -4,6 +4,9 @@ import com.android.AndroidServer.Mapper.ExerciseMapper;
 import com.android.AndroidServer.VO.ExerciseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
@@ -20,5 +23,19 @@ public class ExerciseServiceImpl implements ExerciseService {
 	public void Insert(ExerciseDTO exercise) {
 		exerciseMapper.Insert(exercise);
 	}
+
+
+    @Transactional(readOnly = true)
+    public List<ExerciseDTO> findAllDesc(String email) {
+        System.out.println("유저 email:"+email+"로 조회");
+        return exerciseMapper.findAllDesc(email);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ExerciseDTO> findDateDesc(ExerciseDTO walk) {
+        System.out.println("유저 email:"+walk.getUid()+"조회날짜"+walk.getDayNum()+"로 조회");
+        return exerciseMapper.findDateDesc(walk.getUid(), walk.getDayNum());
+    }
+
 
 }
