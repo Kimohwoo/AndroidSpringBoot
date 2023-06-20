@@ -5,10 +5,11 @@
 <mapper namespace="com.android.andriodproject.mapper.ExerciseMapper">
     
     <select id="GetData" resultType="com.android.andriodproject.DTO.UserDTO">
-        select * from user where uid = #{uid} and 
+        select * from user where uid = #{uid}
     </select>
     
     <insert id="Insert">
-    	insert into exercise(uid, fileName, filePath, exerciseTime, distance, calorie, dayNum) values(#{uid}, #{fileName}, #{filePath}, #{exerciseTime}, #{totalDistance}, #{calorie}, #{dayNum})
+    	insert into exercise(uid, fileName, filePath, exerciseTime, distance, calorie, dayNum)
+        values(#{uid}, #{fileName}, #{filePath}, #{exerciseTime}, #{totalDistance}, #{calorie}, #{dayNum})
     </insert>
 </mapper>

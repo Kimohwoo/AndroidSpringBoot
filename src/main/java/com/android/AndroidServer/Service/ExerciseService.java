@@ -1,6 +1,7 @@
 package com.android.AndroidServer.Service;
 
-import com.android.andriodproject.DTO.ExerciseDTO;
+
+import com.android.AndroidServer.VO.ExerciseDTO;
 
 public interface ExerciseService {
 

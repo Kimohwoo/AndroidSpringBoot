@@ -1,12 +1,9 @@
 package com.android.AndroidServer.Service;
 
+import com.android.AndroidServer.Mapper.ExerciseMapper;
+import com.android.AndroidServer.VO.ExerciseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.android.andriodproject.DTO.ExerciseDTO;
-import com.android.andriodproject.DTO.UserDTO;
-import com.android.andriodproject.mapper.ExerciseMapper;
-import com.android.andriodproject.mapper.UserMapper;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
