@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.android.AndroidServer.Mapper.UserMapper">
+
+	<select id="login" resultType="com.android.AndroidServer.VO.UserDTO">
+	<![CDATA[
+		SELECT *
+		FROM user
+		WHERE uid = #{uId}
+		]]>
+	</select>
+	
+	<insert id="registUser">
+		INSERT INTO user(uid, nickname, dogname, dogprofile)
+		VALUES(
+			#{uId},
+			#{nickName},
+			#{dogName},
+			#{dogProfile}
+		)
+		<selectKey resultType="com.android.AndroidServer.VO.UserDTO" keyProperty="number" order="AFTER"> <!-- 입력후 co_no를 리턴함 -->
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<update id="updateUser">
+		UPDATE user
+		SET uid = #{uId},
+			nickname = #{nickName},
+			dogprofile = #{dogProfile}
+		WHERE uid = #{uId}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM user
+		WHERE uid = #{uId}
+	</delete>
+
+</mapper>
