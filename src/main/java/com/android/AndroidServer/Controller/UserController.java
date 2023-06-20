@@ -5,13 +5,16 @@ import com.android.AndroidServer.VO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
+@RequestMapping("/*")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @PostMapping("user")
+    @PostMapping("user-reg")
     public UserDTO registUser(@RequestBody UserDTO user){
 
         if(userService.register(user)){
@@ -21,9 +24,9 @@ public class UserController {
         }
     }
 
-    @PostMapping("user")
+    @PostMapping("user-login")
     public UserDTO login(@RequestBody UserDTO user){
-
+        System.out.println("user 찍어보기 : "+user.getUId() + ": " + user.getNickName());
         if(user != null){
             return userService.login(user.getUId());
         }

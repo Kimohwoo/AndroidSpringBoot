@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.android.AndroidServer.Service.UserService;
+import com.android.AndroidServer.VO.UserDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +16,16 @@ import com.android.AndroidServer.VO.Criteria;
 
 @RestController
 @RequestMapping("/board/*")
+@AllArgsConstructor
 public class BoardController {
-	@Autowired
 	BoardService boardService;
+	UserService userService;
 	@GetMapping("mylist")
-	public Map<String, Object> myList(@RequestParam("author") String author){
-		System.out.println("author 값 확인 : " + author);
+	public Map<String, Object> myList(@RequestParam("uid") String uid){
+		System.out.println("author 값 확인 : " + uid);
+		UserDTO user = userService.login(uid);
 
-		List<BoardDTO> myBoard = boardService.getMyList(author);
+		List<BoardDTO> myBoard = boardService.getMyList(user.getNickName());
 		Map<String, Object> mapList = new HashMap<String, Object>();
 		mapList.put("item", myBoard);
 		System.out.println(myBoard.toString());
