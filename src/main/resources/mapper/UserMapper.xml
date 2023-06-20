@@ -21,9 +21,6 @@
 			#{dogName},
 			#{dogProfile}
 		)
-		<selectKey resultType="com.android.AndroidServer.VO.UserDTO" keyProperty="number" order="AFTER"> <!-- 입력후 co_no를 리턴함 -->
-			SELECT LAST_INSERT_ID()
-		</selectKey>
 	</insert>
 
 	<update id="updateUser">
@@ -34,7 +31,7 @@
 		WHERE uid = #{uId}
 	</update>
 
-	<delete id="delete">
+	<delete id="deleteUser">
 		DELETE FROM user
 		WHERE uid = #{uId}
 	</delete>

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
 public class UserController {
 
     @Autowired
@@ -15,7 +14,11 @@ public class UserController {
     @PostMapping("user")
     public UserDTO registUser(@RequestBody UserDTO user){
 
-        return null;
+        if(userService.register(user)){
+            return userService.login(user.getUId());
+        } else {
+            return null;
+        }
     }
 
     @PostMapping("user")
@@ -33,6 +36,15 @@ public class UserController {
             return userService.login(user.getUId());
         } else {
             return null;
+        }
+    }
+
+    @DeleteMapping("user")
+    public int deleteUser(@RequestBody UserDTO user){
+        if(userService.deleteUser(user.getUId())){
+            return 1;
+        } else {
+            return 0;
         }
     }
 

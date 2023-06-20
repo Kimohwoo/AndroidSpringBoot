@@ -8,8 +8,10 @@ public interface UserMapper {
 
     public UserDTO login(String uId);
 
-    public UserDTO registUser(UserDTO user);
+    public int registUser(UserDTO user);
 
     public int updateUser(UserDTO user);
+
+    public int deleteUser(String uId);
 
 }

@@ -10,13 +10,23 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UserMapper userMapper;
+
+    @Override
+    public boolean register(UserDTO user) {
+        return userMapper.registUser(user) == 1;
+    }
+
     @Override
     public UserDTO login(String uId) {
         return userMapper.login(uId);
     }
-
     @Override
     public boolean updateUser(UserDTO user) {
-            return userMapper.updateUser(user) == 1;
+        return userMapper.updateUser(user) == 1;
+    }
+
+    @Override
+    public boolean deleteUser(String uId) {
+        return userMapper.deleteUser(uId) == 1;
     }
 }
