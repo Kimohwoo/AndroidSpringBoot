@@ -1,15 +1,15 @@
 package com.android.AndroidServer.Mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
-import com.android.AndroidServer.VO.ExerciseDTO;
+import com.android.andriodproject.DTO.ExerciseDTO;
 
+
+@Repository
 @Mapper
 public interface ExerciseMapper {
+    public ExerciseDTO GetData(String uid);
+	public void Insert(ExerciseDTO exercise);
 
-	public List<ExerciseDTO> findAllDesc(String email);
-	
-	public List<ExerciseDTO> findDateDesc(String email, String dayNum);
 }

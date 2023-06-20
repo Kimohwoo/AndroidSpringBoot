@@ -1,12 +1,10 @@
 package com.android.AndroidServer.Service;
 
-import java.util.List;
-
-import com.android.AndroidServer.VO.ExerciseDTO;
+import com.android.andriodproject.DTO.ExerciseDTO;
 
 public interface ExerciseService {
+
+	public ExerciseDTO GetData(String uid);
 	
-    public List<ExerciseDTO> findAllDesc(String email);
-    
-    public List<ExerciseDTO> findDateDesc(ExerciseDTO walk);
+	public void Insert(ExerciseDTO exercise);
 }

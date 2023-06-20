@@ -1,16 +1,18 @@
 package com.android.AndroidServer.VO;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ExerciseDTO {
 
-    private Long exerciseId;
     private String uid;
-    private String fileName;
-    private String filePath;
-    private String exerciseTime;
-    private String distance;
+    private String fileName;   
+    private String filePath; 
+    private String exerciseTime;    
+    private String totalDistance;    
     private String calorie;
     private String dayNum;
+	
 }
