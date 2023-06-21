@@ -27,6 +27,7 @@
 		UPDATE user
 		SET uid = #{uId},
 			nickname = #{nickName},
+			dogname = #{dogName},
 			dogprofile = #{dogProfile}
 		WHERE uid = #{uId}
 	</update>

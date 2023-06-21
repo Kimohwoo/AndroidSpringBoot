@@ -35,6 +35,7 @@ public class UserController {
 
     @PutMapping("user")
     public UserDTO updateUser(@RequestBody UserDTO user){
+        System.out.println("user 확인용 ->" + user.getDogName());
         if(userService.updateUser(user)){
             return userService.login(user.getUId());
         } else {

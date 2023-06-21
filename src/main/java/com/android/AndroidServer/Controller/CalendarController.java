@@ -27,8 +27,10 @@ public class CalendarController {
 		return list;
 	}
 	@GetMapping("findByDate")
-	public List<ExerciseDTO> findByDate(@RequestBody ExerciseDTO walk){
-		System.out.println("findDate=====findAllDesc==============="+walk.getDayNum());
-		return walkService.findDateDesc(walk);
+	public List<ExerciseDTO> findByDate(@RequestParam("uid") String uid,@RequestParam("dayNum") String dayNum, ExerciseDTO exerciseDTO){
+		exerciseDTO.setUid(uid);
+		exerciseDTO.setDayNum(dayNum);
+		System.out.println("findDate=====findDateDesc==============="+exerciseDTO);
+		return walkService.findDateDesc(exerciseDTO);
 	}
 }
