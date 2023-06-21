@@ -10,6 +10,5 @@ import com.android.AndroidServer.VO.ExerciseDTO;
 public interface ExerciseMapper {
 
 	public List<ExerciseDTO> findAllDesc(String email);
-	
-	public List<ExerciseDTO> findDateDesc(String email, String dayNum);
+	public List<ExerciseDTO> findDateDesc(ExerciseDTO walk);
 }

@@ -1,12 +1,9 @@
 package com.android.AndroidServer.Controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,9 +26,11 @@ public class CalendarController {
 //		walkList.put("items", list);
 		return list;
 	}
-	@GetMapping("findByDate")
-	public List<ExerciseDTO> findByDate(@RequestBody ExerciseDTO walk){
-		System.out.println("findDate=====findAllDesc==============="+walk.getDayNum());
-		return walkService.findDateDesc(walk);
-	}
+   @GetMapping("findByDate")
+   public List<ExerciseDTO> findByDate(@RequestParam("uid") String uid,@RequestParam("dayNum") String dayNum, ExerciseDTO exerciseDTO){
+      exerciseDTO.setUid(uid);
+      exerciseDTO.setDayNum(dayNum);
+      System.out.println("findDate=====findDateDesc==============="+exerciseDTO);
+      return walkService.findDateDesc(exerciseDTO);
+   }
 }
