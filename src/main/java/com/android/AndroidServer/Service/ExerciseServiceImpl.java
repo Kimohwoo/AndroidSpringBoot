@@ -24,18 +24,19 @@ public class ExerciseServiceImpl implements ExerciseService {
 		exerciseMapper.Insert(exercise);
 	}
 
-
     @Transactional(readOnly = true)
     public List<ExerciseDTO> findAllDesc(String email) {
         System.out.println("유저 email:"+email+"로 조회");
-        return exerciseMapper.findAllDesc(email);
+    	return exerciseMapper.findAllDesc(email);
     }
 
     @Transactional(readOnly = true)
     public List<ExerciseDTO> findDateDesc(ExerciseDTO walk) {
-        System.out.println("유저 email:"+walk.getUid()+"조회날짜"+walk.getDayNum()+"로 조회");
-        return exerciseMapper.findDateDesc(walk.getUid(), walk.getDayNum());
+        String uid=walk.getUid();
+        String dayNum=walk.getDayNum();
+        System.out.println("유저 uid:"+uid+"조회날짜"+dayNum+"로 조회");
+        List<ExerciseDTO> exerciseList=exerciseMapper.findDateDesc(walk);
+        System.out.println(exerciseList);
+        return exerciseList;
     }
-
-
 }
