@@ -33,7 +33,9 @@ public class BoardController {
 	}
 
 	@GetMapping("list")
-	public Map<String, Object> RequestList(@RequestParam("pageNo") int pageNo, @RequestParam("numOfRows") int numOfRows) {
+	public Map<String, Object> RequestList(
+			@RequestParam("pageNo") int pageNo,
+		    @RequestParam("numOfRows") int numOfRows) {
 
 		Criteria cri = new Criteria(pageNo, numOfRows);
 
@@ -55,7 +57,6 @@ public class BoardController {
 		}
 		return "0";
 	}
-
 	@PutMapping("detail")
 	public long updateBoard(@RequestParam("no") long no, @RequestBody BoardDTO board){
 
