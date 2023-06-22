@@ -26,7 +26,6 @@ public class UserController {
 
     @PostMapping("user-login")
     public UserDTO login(@RequestBody UserDTO user){
-        System.out.println("user 찍어보기 : "+user.getUId() + ": " + user.getNickName());
         if(user != null){
             return userService.login(user.getUId());
         }
